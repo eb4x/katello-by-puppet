@@ -20,6 +20,10 @@ Vagrant.configure("2") do |config|
     lv.video_type = "virtio"
   end
 
+  config.vm.synced_folder ".", "/vagrant", type: "rsync",
+    rsync__exclude: [".git/", ".r10k/", "modules/"],
+    rsync__args: ["--verbose", "--archive", "-z", "--copy-links"]
+
   config.vm.provision "puppet install", type: "shell",
     privileged: true,
     inline: <<-SHELL
