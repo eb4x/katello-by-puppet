@@ -34,6 +34,15 @@ Vagrant.configure("2") do |config|
 
       rpm -Uvh https://yum.puppet.com/puppet7-release-el-${distro_major_version}.noarch.rpm
       dnf install -y puppet-agent
+      /opt/puppetlabs/puppet/bin/gem install r10k -v '<4'
+    SHELL
+
+  config.vm.provision "puppet modules", type: "shell",
+    privileged: false,
+    keep_color: true,
+    inline: <<-SHELL
+      cd /vagrant
+      /opt/puppetlabs/puppet/bin/r10k --verbose=info puppetfile install
     SHELL
 
   config.vm.define "foreman" do |subconfig|
