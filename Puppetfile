@@ -1,0 +1,23 @@
+forge 'https://forgeapi.puppet.com/'
+
+# We're not ready for version 9
+mod 'puppetlabs/stdlib',               '8.6.0'  # '< 9'
+mod 'puppetlabs/apt',                  '9.0.2'  # '< 9.1.0'
+
+mod 'puppetlabs/apache',               '8.6.0'  # '~> 8.3'
+mod 'puppetlabs/postgresql',           '9.2.0'  # '>= 7.4.0'
+mod 'puppet/redis',                    '8.8.0'  # '~> 8.5'
+mod 'theforeman/dhcp',                 '9.0.0'  # '>= 9.0.0 < 9.1.0'
+mod 'theforeman/dns',                  '10.0.0' # '>= 10.0.0 < 10.1.0'
+mod 'theforeman/git',                  '7.2.0'  # '>= 7.2.0 < 7.3.0'
+mod 'theforeman/puppetserver_foreman', '2.3.0'  # '>= 2.3.0 < 2.4.0'
+mod 'theforeman/tftp',                 '8.0.0'  # '>= 8.0.0 < 8.1.0'
+mod 'katello/candlepin',               '14.0.0' # '>= 14.0.0 < 14.1.0'
+mod 'theforeman/pulpcore',             '8.2.0'  # '>= 8.2.0 < 8.3.0'
+mod 'katello/qpid',                    '10.0.0' # '>= 10.0.0 < 10.1.0'
+mod 'theforeman/foreman',              '23.0.0' # '>= 23.0.0 < 23.1.0'
+mod 'theforeman/foreman_proxy',        '25.0.0' # '>= 25.0.0 < 25.1.0'
+mod 'theforeman/puppet',               '17.1.0' # '>= 17.1.0 < 17.2.0'
+mod 'katello/foreman_proxy_content',   '24.2.0' # '>= 24.2.0 < 24.3.0'
+mod 'katello/certs',                   '16.0.2' # '>= 16.0.2 < 16.1.0'
+mod 'katello/katello',                 '23.1.0' # '>= 23.1.0 < 23.2.0'
