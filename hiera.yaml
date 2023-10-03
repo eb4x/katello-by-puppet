@@ -8,5 +8,8 @@ defaults:
   datadir: data
   data_hash: yaml_data
 hierarchy:
+  - name: "Per-node data"
+    paths:
+      - "nodes/%{trusted.certname}.yaml"
   - name: "Common data"
     path: "common.yaml"

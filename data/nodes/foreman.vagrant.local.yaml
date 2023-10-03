@@ -1,0 +1,4 @@
+---
+foreman_proxy::dhcp_interface: eth1
+foreman_proxy::dhcp_nameservers: "%{facts.networking.interfaces.eth1.ip}"
+foreman_proxy::dns_interface: eth1

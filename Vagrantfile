@@ -6,10 +6,6 @@ Vagrant.configure("2") do |config|
   config.vm.provider "libvirt" do |lv|
     lv.machine_type = "q35" # qemu-system-x86_64 -machine help
 
-    # https://libvirt.org/formatdomain.html#bios-bootloader
-    #libvirt.loader :readonly => yes, :secure => yes, :type => pflash, /usr/share/OVMF/OVMF_CODE.fd
-    #nvram template='/usr/share/OVMF/OVMF_VARS.fd'>/var/lib/libvirt/nvram/guest_VARS.fd
-
     lv.cpus = 2
     lv.memory = 1024
 
@@ -61,9 +57,13 @@ Vagrant.configure("2") do |config|
     subconfig.vm.provider "libvirt" do |lv|
       lv.cpus = 3
       lv.memory = 12288
+
+      # https://libvirt.org/formatdomain.html#bios-bootloader
+      lv.loader = '/usr/share/OVMF/OVMF_CODE.secboot.fd'
+      lv.nvram = '/usr/share/OVMF/OVMF_VARS.secboot.fd'
     end
 
-    subconfig.vm.box = "almalinux/8"
+    subconfig.vm.box = "almalinux/8.uefi"
     #subconfig.vm.box = "generic/centos8s"
     subconfig.vm.hostname = "foreman.vagrant.local"
     subconfig.vm.network "private_network",
