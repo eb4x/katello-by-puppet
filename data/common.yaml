@@ -25,3 +25,5 @@ profile::foreman::settings:
   # Provisioning
   default_pxe_item_global:
     value: discovery
+
+katello::repo::repo_version: '4.9'
