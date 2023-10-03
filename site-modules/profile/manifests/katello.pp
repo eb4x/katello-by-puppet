@@ -13,4 +13,13 @@ class profile::katello (
 
   include ::candlepin::repo
 
+  if $facts['os']['selinux']['enabled'] {
+    selinux::port { 'tomcat_candlepin_port':
+      seltype => 'http_port_t',
+      protocol => 'tcp',
+      port => 23443,
+      before => Service['tomcat'],
+    }
+  }
+
 }

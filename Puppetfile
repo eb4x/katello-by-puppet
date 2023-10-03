@@ -24,6 +24,7 @@ mod 'katello/katello',                 '23.1.0' # '>= 23.1.0 < 23.2.0'
 
 mod 'puppet/extlib',      '6.2.0'
 mod 'puppet/mosquitto',   '1.2.0'
+mod 'puppet/selinux',     '3.4.1'
 mod 'puppet/systemd',     '4.2.0'
 mod 'puppet/trusted_ca',  '4.1.0'
 mod 'puppetlabs/concat',  '7.4.0'
