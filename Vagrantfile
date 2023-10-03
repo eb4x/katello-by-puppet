@@ -54,7 +54,7 @@ Vagrant.configure("2") do |config|
     keep_color: true,
     inline: <<-SHELL
       cd /vagrant
-      sudo /opt/puppetlabs/bin/puppet apply --modulepath site-modules:modules manifests/site.pp
+      sudo /opt/puppetlabs/bin/puppet apply --modulepath site-modules:modules --hiera_config=hiera.yaml manifests/site.pp
     SHELL
 
   config.vm.define "foreman" do |subconfig|

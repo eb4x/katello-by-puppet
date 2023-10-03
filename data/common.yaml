@@ -1,0 +1,2 @@
+---
+foreman::repo::repo: '3.7'

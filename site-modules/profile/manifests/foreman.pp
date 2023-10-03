@@ -3,9 +3,7 @@ class profile::foreman (
   String $db_password = 'changeme',
 ) {
 
-  class { '::foreman::repo':
-    repo => '3.7',
-  }
+  include ::foreman::repo
 
   class { '::puppet':
     server                => true,
