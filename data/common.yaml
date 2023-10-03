@@ -18,3 +18,10 @@ foreman_proxy::dhcp_range: "172.16.0.200 172.16.0.220"
 foreman_proxy::dns: true
 foreman_proxy::dns_interface: enp5s0
 foreman_proxy::tftp: true
+
+foreman_proxy::plugin::discovery::install_images: true
+
+profile::foreman::settings:
+  # Provisioning
+  default_pxe_item_global:
+    value: discovery
