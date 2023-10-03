@@ -27,3 +27,4 @@ profile::foreman::settings:
     value: discovery
 
 katello::repo::repo_version: '4.9'
+candlepin::repo::version: '4.9'
