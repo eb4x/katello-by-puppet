@@ -6,3 +6,15 @@ foreman::plugin_version: latest
 
 foreman::initial_admin_password: changeme
 foreman::db_password: changeme
+
+foreman_proxy::version: latest
+foreman_proxy::plugin::version: latest
+
+foreman_proxy::bmc: true
+foreman_proxy::dhcp: true
+foreman_proxy::dhcp_interface: enp5s0
+foreman_proxy::dhcp_nameservers: "%{facts.networking.interfaces.enp5s0.ip}"
+foreman_proxy::dhcp_range: "172.16.0.200 172.16.0.220"
+foreman_proxy::dns: true
+foreman_proxy::dns_interface: enp5s0
+foreman_proxy::tftp: true
