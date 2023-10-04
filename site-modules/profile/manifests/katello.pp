@@ -19,4 +19,8 @@ class profile::katello (
     -> Service['tomcat']
   }
 
+  include ::foreman_proxy_content
+  Class['katello::repo']
+  -> Class['foreman_proxy_content', 'foreman_proxy_content::pub_dir']
+
 }
