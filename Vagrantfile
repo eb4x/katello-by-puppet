@@ -53,6 +53,9 @@ Vagrant.configure("2") do |config|
       sudo /opt/puppetlabs/bin/puppet apply --modulepath site-modules:modules --hiera_config=hiera.yaml manifests/site.pp
     SHELL
 
+  config.vm.provision "foreman ansible", type: "ansible",
+    compatibility_mode: "2.0", playbook: "ansible/foreman.yml"
+
   config.vm.define "foreman" do |subconfig|
     subconfig.vm.provider "libvirt" do |lv|
       lv.cpus = 3
