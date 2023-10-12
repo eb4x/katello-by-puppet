@@ -33,7 +33,7 @@ Vagrant.configure("2") do |config|
       fi
 
       rpm -Uvh https://yum.puppet.com/puppet7-release-el-${distro_major_version}.noarch.rpm
-      dnf install -y puppet-agent
+      dnf install -y git puppet-agent
       /opt/puppetlabs/puppet/bin/gem install r10k -v '<4'
     SHELL
 
