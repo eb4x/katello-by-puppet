@@ -2,6 +2,7 @@ class profile::foreman (
 ) {
 
   include ::foreman
+  include ::foreman::cli
   include ::foreman::repo
 
   Class['foreman::repo']
