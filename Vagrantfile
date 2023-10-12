@@ -20,6 +20,19 @@ Vagrant.configure("2") do |config|
     rsync__exclude: [".git/", ".r10k/", "modules/"],
     rsync__args: ["--verbose", "--archive", "-z", "--copy-links"]
 
+  config.vm.provision "make bigger", type: "shell",
+    privileged: true,
+    inline: <<-SHELL
+      dnf install -y cloud-utils-growpart
+
+      # Figure out which partition root is on. (UEFI it's 2)
+      if [[ $(lsblk --noheadings --list -o NAME,FSTYPE,MOUNTPOINT) \
+            =~ sda([[:digit:]])[[:space:]]+xfs[[:space:]]+\/ ]]; then
+        growpart /dev/sda ${BASH_REMATCH[1]}
+        xfs_growfs /dev/sda${BASH_REMATCH[1]}
+      fi
+    SHELL
+
   config.vm.provision "puppet install", type: "shell",
     privileged: true,
     inline: <<-SHELL
@@ -80,6 +93,7 @@ Vagrant.configure("2") do |config|
     subconfig.vm.provider "libvirt" do |lv|
       lv.cpus = 4
       lv.memory = 20480
+      lv.machine_virtual_size = 60
     end
 
     subconfig.vm.box = "almalinux/8"
