@@ -14,12 +14,9 @@ class profile::katello (
   include ::candlepin::repo
 
   if $facts['os']['selinux']['enabled'] {
-    selinux::port { 'tomcat_candlepin_port':
-      seltype => 'http_port_t',
-      protocol => 'tcp',
-      port => 23443,
-      before => Service['tomcat'],
-    }
+    # Needs fix in candlepin/manifests/artemis.pp
+    Selboolean['candlepin_can_bind_activemq_port']
+    -> Service['tomcat']
   }
 
 }
