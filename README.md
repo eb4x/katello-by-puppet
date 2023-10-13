@@ -9,3 +9,7 @@ vagrant provision foreman --provision-with "puppet apply"
 # Testing hiera data; (esp interpolation)
 sudo /opt/puppetlabs/bin/puppet lookup foreman_proxy::dhcp_nameservers --hiera_config=hiera.yaml
 ```
+
+```
+dot -Tsvg graphs/expanded_relationships.dot -o graphex.svg
+```
