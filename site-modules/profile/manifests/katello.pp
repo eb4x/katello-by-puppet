@@ -29,4 +29,9 @@ class profile::katello (
   Class['katello::repo']
   -> Class['foreman_proxy_content', 'foreman_proxy_content::pub_dir']
 
+  include ::foreman::cli::katello
+  include ::foreman::cli::remote_execution
+  include ::foreman::plugin::remote_execution
+  include ::foreman::plugin::tasks
+
 }
