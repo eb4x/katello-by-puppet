@@ -26,6 +26,13 @@ class profile::katello (
   }
 
   include ::foreman_proxy_content
+
+  package { 'foreman-proxy-content':
+    ensure => installed,
+    require => Class['katello::repo'],
+    before => Class['foreman_proxy', 'foreman_proxy_content'],
+  }
+
   Class['katello::repo']
   -> Class['foreman_proxy_content', 'foreman_proxy_content::pub_dir']
 
