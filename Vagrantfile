@@ -66,9 +66,6 @@ Vagrant.configure("2") do |config|
       sudo /opt/puppetlabs/bin/puppet apply --modulepath site-modules:modules --hiera_config=hiera.yaml --graph --graphdir graphs manifests/site.pp
     SHELL
 
-  config.vm.provision "foreman ansible", type: "ansible",
-    compatibility_mode: "2.0", playbook: "ansible/foreman.yml"
-
   config.vm.define "foreman" do |subconfig|
     subconfig.vm.provider "libvirt" do |lv|
       lv.cpus = 3
@@ -79,8 +76,10 @@ Vagrant.configure("2") do |config|
       lv.nvram = '/usr/share/OVMF/OVMF_VARS.secboot.fd'
     end
 
+    subconfig.vm.provision "foreman ansible", type: "ansible",
+      compatibility_mode: "2.0", playbook: "ansible/foreman.yml"
+
     subconfig.vm.box = "almalinux/8.uefi"
-    #subconfig.vm.box = "generic/centos8s"
     subconfig.vm.hostname = "foreman.vagrant.local"
     subconfig.vm.network "private_network",
       :ip => "172.16.0.10",
@@ -96,8 +95,10 @@ Vagrant.configure("2") do |config|
       lv.machine_virtual_size = 60
     end
 
+    subconfig.vm.provision "foreman ansible", type: "ansible",
+      compatibility_mode: "2.0", playbook: "ansible/foreman.yml"
+
     subconfig.vm.box = "almalinux/8"
-    #subconfig.vm.box = "generic/centos8s"
     subconfig.vm.hostname = "katello.vagrant.local"
     subconfig.vm.network "private_network",
       :ip => "172.16.0.11",
