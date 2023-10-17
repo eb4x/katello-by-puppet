@@ -106,4 +106,20 @@ Vagrant.configure("2") do |config|
       :libvirt__dhcp_enabled => false,
       :libvirt__forward_mode => "none"
   end
+
+  config.vm.define "installer" do |subconfig|
+    subconfig.vm.provider "libvirt" do |lv|
+      lv.cpus = 4
+      lv.memory = 20480
+      lv.machine_virtual_size = 60
+    end
+
+    subconfig.vm.box = "almalinux/8"
+    subconfig.vm.hostname = "installer.vagrant.local"
+    subconfig.vm.network "private_network",
+      :ip => "172.16.0.12",
+      :libvirt__network_name => "provision",
+      :libvirt__dhcp_enabled => false,
+      :libvirt__forward_mode => "none"
+  end
 end

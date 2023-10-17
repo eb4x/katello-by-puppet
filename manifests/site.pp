@@ -7,3 +7,7 @@ node 'foreman.vagrant.local' {
 node 'katello.vagrant.local' {
   include "role::reposerver"
 }
+
+node 'installer.vagrant.local' {
+  include "role::installer"
+}
